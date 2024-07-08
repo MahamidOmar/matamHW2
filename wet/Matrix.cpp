@@ -26,7 +26,23 @@ Matrix::~Matrix() {
     delete[] matrix;
 }
 
-Matrix &Matrix::operator=(const Matrix &matrix) {
+Matrix &Matrix::operator=(const Matrix &to_copy) {
+    ////    check if this is equal to other, then no copy needed
+    if(*this == to_copy){
+        return *this;
+    }
+    ////    copy the rows and cols fields first
+    this->rows = to_copy.rows;
+    this->cols = to_copy.cols;
+    ////    delete the old dynamically allocated matrix
+    delete [] this->matrix;
+    ////    and then allocate a new matrix
+    this->matrix = new int[this->rows * this->cols];
+    ////    and now copy the elements inside the matrix
+    for (int i = 0; i < rows * cols; ++i) {
+        matrix[i] = to_copy.matrix[i];
+    }
+    return *this;
 }
 
 int Matrix::operator()(int row, int column) const {
