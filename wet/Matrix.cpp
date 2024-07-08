@@ -1,16 +1,24 @@
 
 #include "Matrix.h"
 
+////    initialize rows and cols to 0, and matrix to null
 Matrix::Matrix() : rows(0), cols(0), matrix(nullptr){}
 
+////    initialize rows and cols to the given parameters, and initialize matrix dynamically
 Matrix::Matrix(int rows, int cols) : rows(rows), cols(0), matrix(new int[rows * cols]){
+    ////    here rows cols, and matrix are already initialized
     for (int i = 0; i < rows * cols; ++i) {
         matrix[i] = 0;
     }
 }
 
-Matrix::Matrix(const Matrix &matrix) {
-
+////    copy the rows and cols field, and initialize the matrix array dynamically accordingly
+Matrix::Matrix(const Matrix &to_copy) : rows(to_copy.rows), cols(to_copy.cols),
+                                        matrix(new int [to_copy.rows * to_copy.cols]) {
+    ////    here rows cols, and matrix are already initialized
+    for (int i = 0; i < rows * cols; ++i) {
+        matrix[i] = to_copy.matrix[i];
+    }
 }
 
 Matrix::~Matrix() {
