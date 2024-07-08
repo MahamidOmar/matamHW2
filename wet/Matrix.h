@@ -9,7 +9,7 @@ class Matrix {
 private:
     int height;
     int width;
-    int matrix[];
+    int *matrix;
 public:
     ////    empty constructor
     Matrix();
