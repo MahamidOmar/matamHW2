@@ -58,9 +58,9 @@ public:
 
     ////    operators for comparing matrix
 
-    friend bool operator==(const Matrix& h1, const Matrix& h2);
+    friend bool operator==(const Matrix& m1, const Matrix& m2);
 
-    friend bool operator!=(const Matrix& h1, const Matrix& h2);
+    friend bool operator!=(const Matrix& m1, const Matrix& m2);
 
     ////    methods for Matrix
     Matrix rotateClockwise() const;

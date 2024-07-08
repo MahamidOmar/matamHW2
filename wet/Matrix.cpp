@@ -195,12 +195,26 @@ Matrix &Matrix::operator*=(int scalar) {
     return *this;
 }
 
-bool operator==(const Matrix &h1, const Matrix &h2) {
-    return false;
+////    implemented fully
+bool operator==(const Matrix &m1, const Matrix &m2) {
+    ////    check for unmatching sizes
+    if(m1.rows != m2.rows && m1.cols != m2.cols) {
+        return false;
+    }
+    for (int i = 0; i < m1.rows; ++i) {
+        for (int j = 0; j < m1.cols; ++j) {
+            ////    uses operator()
+            if(m1(i, j) != m2(i, j)){
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
-bool operator!=(const Matrix &h1, const Matrix &h2) {
-    return false;
+////    uses operator==
+bool operator!=(const Matrix &m1, const Matrix &m2) {
+    return !(m1 == m2);
 }
 
 Matrix Matrix::rotateClockwise() const {
