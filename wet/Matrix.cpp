@@ -168,15 +168,31 @@ Matrix Matrix::operator-() const {
     return result;
 }
 
+////    uses the operator * below it
 Matrix operator*(int scalar, const Matrix &matrix) {
-    return Matrix();
+    return matrix * scalar;
 }
 
+////    uses the operator *= below it
 Matrix operator*(const Matrix &matrix, int scalar) {
-    return Matrix();
+    ////    first copy the matrix
+    Matrix result(matrix);
+    ////    and then use the *=
+    return (result *= scalar);
 }
 
+////    implemented fully
 Matrix &Matrix::operator*=(int scalar) {
+    ////    check if no elements, nothing to do
+    if(this-> rows == 0 && this->cols == 0){
+        return *this;
+    }
+    for (int i = 0; i < this->rows; ++i) {
+        for (int j = 0; j < this->cols; ++j) {
+            this->matrix[i * rows + j] *= scalar;
+        }
+    }
+    return *this;
 }
 
 bool operator==(const Matrix &h1, const Matrix &h2) {
