@@ -9,6 +9,20 @@ private:
     int width;
     int matrix[];
 public:
+    ////    empty constructor
+    Matrix();
+
+    ////    constructor with width and height
+    Matrix(int height, int width);
+
+    ////    copy constructor
+    Matrix(const Matrix& matrix);
+
+    ////    destructor
+    ~Matrix();
+
+    ////    operator= for matrix
+    Matrix& operator=(const Matrix& matrix);
 
 };
 
