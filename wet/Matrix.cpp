@@ -1,10 +1,10 @@
 
 #include "Matrix.h"
 
-Matrix::Matrix() : height(0), width(0), matrix(nullptr){}
+Matrix::Matrix() : rows(0), cols(0), matrix(nullptr){}
 
-Matrix::Matrix(int height, int width) : height(height), width(0), matrix(new int[height * width]){
-    for (int i = 0; i < height * width; ++i) {
+Matrix::Matrix(int rows, int cols) : rows(rows), cols(0), matrix(new int[rows * cols]){
+    for (int i = 0; i < rows * cols; ++i) {
 
     }
 }
