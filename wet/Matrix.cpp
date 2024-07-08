@@ -103,8 +103,16 @@ Matrix Matrix::operator*(const Matrix &to_add) const {
 
 ////    implemented fully
 Matrix &Matrix::operator+=(const Matrix &to_add) {
+    ////    if both have no elements
+    if(this->rows == 0 && this-> cols == 0 && to_add.rows == 0 && to_add.cols == 0){
+        return *this;
+    }
+    ////    reaches here if one has no elements and the other one does
+    if((this->rows == 0 && to_add.rows != 0) || (this->rows != 0 && to_add.rows == 0)){
+        exitWithError(MatamErrorType::UnmatchedSizes);
+    }
     ////    check for errors with sizes
-    if(this->rows != to_add.rows || this->cols != to_add.cols){
+    if(this->rows != to_add.rows || this->cols != to_add.cols || to_add.rows == 0 || to_add.cols == 0){
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
     for (int i = 0; i < this->rows; ++i) {
@@ -123,8 +131,16 @@ Matrix &Matrix::operator-=(const Matrix &to_add) {
 
 ////    this differs from the += and -= operators
 Matrix &Matrix::operator*=(const Matrix &to_add) {
+    ////    if both have no elements
+    if(this->rows == 0 && this-> cols == 0 && to_add.rows == 0 && to_add.cols == 0){
+        return *this;
+    }
+    ////    reaches here if one has no elements and the other one does
+    if((this->rows == 0 && to_add.rows != 0) || (this->rows != 0 && to_add.rows == 0)){
+        exitWithError(MatamErrorType::UnmatchedSizes);
+    }
     ////    check for errors with sizes for multiplication
-    if(this->cols != to_add.rows){
+    if(this->cols != to_add.rows || to_add.rows == 0 || to_add.cols == 0){
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
     Matrix result(this->rows, to_add.cols);
