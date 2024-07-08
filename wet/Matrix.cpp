@@ -21,8 +21,9 @@ Matrix::Matrix(const Matrix &to_copy) : rows(to_copy.rows), cols(to_copy.cols),
     }
 }
 
+////    just need to destroy the dynamically allocated matrix
 Matrix::~Matrix() {
-
+    delete[] matrix;
 }
 
 Matrix &Matrix::operator=(const Matrix &matrix) {
