@@ -78,18 +78,32 @@ std::ostream &operator<<(std::ostream &os, const Matrix &to_print) {
     return os;
 }
 
+////    these 3 operators use the 3 with = below
+////    note that checking for unmatched sizes is done within operators with =
 Matrix Matrix::operator+(const Matrix &to_add) const {
-
+    ////    first copy the current (this) matrix
+    Matrix result(*this);
+    ////    and then use operator+=
+    return (result += to_add);
 }
 
 Matrix Matrix::operator-(const Matrix &to_add) const {
+    ////    first copy the current (this) matrix
+    Matrix result(*this);
+    ////    and then use operator-=
+    return (result -= to_add);
 }
 
 Matrix Matrix::operator*(const Matrix &to_add) const {
+    ////    first copy the current (this) matrix
+    Matrix result(*this);
+    ////    and then use operator*=
+    return (result *= to_add);
 }
 
 ////    implemented fully
 Matrix &Matrix::operator+=(const Matrix &to_add) {
+    ////    check for errors with sizes
     if(this->rows != to_add.rows || this->cols != to_add.cols){
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
@@ -109,6 +123,7 @@ Matrix &Matrix::operator-=(const Matrix &to_add) {
 
 ////    just like += but with *= instead
 Matrix &Matrix::operator*=(const Matrix &to_add) {
+    ////    check for errors with sizes
     if(this->rows != to_add.rows || this->cols != to_add.cols){
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
