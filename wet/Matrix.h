@@ -4,6 +4,11 @@
 
 
 class Matrix {
+private:
+    int height;
+    int width;
+    int matrix[];
+public:
 
 };
 
