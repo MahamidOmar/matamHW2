@@ -1,11 +1,12 @@
 
 #include "Matrix.h"
 
-Matrix::Matrix() : height(0), width(0), matrix(nullptr){
-}
+Matrix::Matrix() : height(0), width(0), matrix(nullptr){}
 
-Matrix::Matrix(int height, int width) {
+Matrix::Matrix(int height, int width) : height(height), width(0), matrix(new int[height * width]){
+    for (int i = 0; i < height * width; ++i) {
 
+    }
 }
 
 Matrix::Matrix(const Matrix &matrix) {

@@ -7,15 +7,15 @@
 
 class Matrix {
 private:
-    int height;
-    int width;
+    int rows;
+    int cols;
     int *matrix;
 public:
     ////    empty constructor
     Matrix();
 
-    ////    constructor with width and height
-    Matrix(int height, int width);
+    ////    constructor with cols and rows
+    Matrix(int rows, int cols);
 
     ////    copy constructor
     Matrix(const Matrix& matrix);
