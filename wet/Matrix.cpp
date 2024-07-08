@@ -66,7 +66,15 @@ int &Matrix::operator()(int i, int j) {
     return this->matrix[i * rows + j];
 }
 
-std::ostream &operator<<(std::ostream &os, const Matrix &h) {
+std::ostream &operator<<(std::ostream &os, const Matrix &to_print) {
+    for (int i = 0; i < to_print.rows; ++i) {
+        ////    first print the | before printing each row
+        std::cout << "|";
+        for (int j = 0; j < to_print.cols; ++j) {
+            ////    use the operator() from before, and after each element print |
+            std::cout << to_print(i, j) << "|";
+        }
+    }
 }
 
 Matrix Matrix::operator+(const Matrix &matrix) const {

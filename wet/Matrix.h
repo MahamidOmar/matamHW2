@@ -33,7 +33,7 @@ public:
     int& operator()(int i, int j);
 
     ////    operator << for printing
-    friend std::ostream& operator<<(std::ostream& os, const Matrix& h);
+    friend std::ostream& operator<<(std::ostream& os, const Matrix& to_print);
 
     ////    arithmetic operators for Matrix
     Matrix operator+(const  Matrix& matrix) const;
