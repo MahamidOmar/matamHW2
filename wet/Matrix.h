@@ -27,10 +27,10 @@ public:
     Matrix& operator=(const Matrix& matrix);
 
     ////    operator() for reading
-    int operator()(int row, int column) const;
+    int operator()(int i, int j) const;
 
     ////    operator() for writing
-    int& operator()(int row, int column);
+    int& operator()(int i, int j);
 
     ////    operator << for printing
     friend std::ostream& operator<<(std::ostream& os, const Matrix& h);

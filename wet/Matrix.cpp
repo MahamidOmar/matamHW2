@@ -1,11 +1,16 @@
 
 #include "Matrix.h"
+#include "Utilities.h"
 
 ////    initialize rows and cols to 0, and matrix to null
 Matrix::Matrix() : rows(0), cols(0), matrix(nullptr){}
 
 ////    initialize rows and cols to the given parameters, and initialize matrix dynamically
 Matrix::Matrix(int rows, int cols) : rows(rows), cols(0), matrix(new int[rows * cols]){
+    ////    check if rows or cols are zero or negative
+    if(rows <= 0 || cols <= 0){
+        exitWithError(MatamErrorType::OutOfBounds);
+    }
     ////    here rows cols, and matrix are already initialized
     for (int i = 0; i < rows * cols; ++i) {
         matrix[i] = 0;
@@ -45,11 +50,20 @@ Matrix &Matrix::operator=(const Matrix &to_copy) {
     return *this;
 }
 
-int Matrix::operator()(int row, int column) const {
-    return 0;
+int Matrix::operator()(int i, int j) const {
+    ////    check if illegal indexes
+    if(i < 0 || j < 0 || i > rows || j > cols){
+        exitWithError(MatamErrorType::OutOfBounds);
+    }
+    return this->matrix[i * rows + j];
 }
 
-int &Matrix::operator()(int row, int column) {
+int &Matrix::operator()(int i, int j) {
+    ////    check if illegal indexes
+    if(i < 0 || j < 0 || i > rows || j > cols){
+        exitWithError(MatamErrorType::OutOfBounds);
+    }
+    return this->matrix[i * rows + j];
 }
 
 std::ostream &operator<<(std::ostream &os, const Matrix &h) {
