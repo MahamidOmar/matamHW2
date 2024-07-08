@@ -77,25 +77,25 @@ std::ostream &operator<<(std::ostream &os, const Matrix &to_print) {
     }
 }
 
-Matrix Matrix::operator+(const Matrix &matrix) const {
+Matrix Matrix::operator+(const Matrix &to_add) const {
     return Matrix();
 }
 
-Matrix Matrix::operator-(const Matrix &matrix) const {
+Matrix Matrix::operator-(const Matrix &to_add) const {
     return Matrix();
 }
 
-Matrix Matrix::operator*(const Matrix &matrix) const {
+Matrix Matrix::operator*(const Matrix &to_add) const {
     return Matrix();
 }
 
-Matrix &Matrix::operator+=(const Matrix &matrix) {
+Matrix &Matrix::operator+=(const Matrix &to_add) {
 }
 
-Matrix &Matrix::operator-=(const Matrix &matrix) {
+Matrix &Matrix::operator-=(const Matrix &to_add) {
 }
 
-Matrix &Matrix::operator*=(const Matrix &matrix) {
+Matrix &Matrix::operator*=(const Matrix &to_add) {
 }
 
 Matrix Matrix::operator-() const {

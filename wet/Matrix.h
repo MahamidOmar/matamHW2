@@ -36,23 +36,23 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Matrix& to_print);
 
     ////    arithmetic operators for Matrix
-    Matrix operator+(const  Matrix& matrix) const;
+    Matrix operator+(const  Matrix& to_add) const;
 
-    Matrix operator-(const  Matrix& matrix) const;
+    Matrix operator-(const  Matrix& to_add) const;
 
-    Matrix operator*(const  Matrix& matrix) const;
+    Matrix operator*(const  Matrix& to_add) const;
 
-    Matrix& operator+=(const Matrix& matrix);
+    Matrix& operator+=(const Matrix& to_add);
 
-    Matrix& operator-=(const Matrix& matrix);
+    Matrix& operator-=(const Matrix& to_add);
 
-    Matrix& operator*=(const Matrix& matrix);
+    Matrix& operator*=(const Matrix& to_add);
 
     Matrix operator-()const;
 
-    friend Matrix operator*(int scalar, const Matrix& matrix);
+    friend Matrix operator*(int scalar, const Matrix& to_add);
 
-    friend Matrix operator*(const Matrix& matrix, int scalar);
+    friend Matrix operator*(const Matrix& to_add, int scalar);
 
     Matrix& operator*=(int scalar);
 
