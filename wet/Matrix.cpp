@@ -88,6 +88,7 @@ Matrix Matrix::operator-(const Matrix &to_add) const {
 Matrix Matrix::operator*(const Matrix &to_add) const {
 }
 
+////    implemented fully
 Matrix &Matrix::operator+=(const Matrix &to_add) {
     if(this->rows != to_add.rows || this->cols != to_add.cols){
         exitWithError(MatamErrorType::UnmatchedSizes);
@@ -101,10 +102,23 @@ Matrix &Matrix::operator+=(const Matrix &to_add) {
     return *this;
 }
 
+////    uses the += and the unary - operators
 Matrix &Matrix::operator-=(const Matrix &to_add) {
+    return (*this) += (-to_add);
 }
 
+////    just like += but with *= instead
 Matrix &Matrix::operator*=(const Matrix &to_add) {
+    if(this->rows != to_add.rows || this->cols != to_add.cols){
+        exitWithError(MatamErrorType::UnmatchedSizes);
+    }
+    for (int i = 0; i < this->rows; ++i) {
+        for (int j = 0; j < this->rows; ++j) {
+            ////    use the operator() to add the value
+            this->matrix[i * rows + cols] *= to_add(i, j);
+        }
+    }
+    return *this;
 }
 
 Matrix Matrix::operator-() const {
