@@ -69,12 +69,13 @@ int &Matrix::operator()(int i, int j) {
 std::ostream &operator<<(std::ostream &os, const Matrix &to_print) {
     for (int i = 0; i < to_print.rows; ++i) {
         ////    first print the | before printing each row
-        std::cout << "|";
+        os << "|";
         for (int j = 0; j < to_print.cols; ++j) {
             ////    use the operator() from before, and after each element print |
-            std::cout << to_print(i, j) << "|";
+            os << to_print(i, j) << "|";
         }
     }
+    return os;
 }
 
 Matrix Matrix::operator+(const Matrix &to_add) const {
@@ -99,7 +100,15 @@ Matrix &Matrix::operator*=(const Matrix &to_add) {
 }
 
 Matrix Matrix::operator-() const {
-    return Matrix();
+    ////    initialize a matrix result
+    Matrix result(this->rows, this->cols);
+    for (int i = 0; i < this->rows; ++i) {
+        for (int j = 0; j < this->rows; ++j) {
+            ////    use the operator() to update the value
+            result(i, j) = (-1) * (*this)(i, j);
+        }
+    }
+    return result;
 }
 
 Matrix operator*(int scalar, const Matrix &matrix) {
