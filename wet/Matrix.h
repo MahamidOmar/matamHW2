@@ -62,6 +62,13 @@ public:
 
     friend bool operator!=(const Matrix& h1, const Matrix& h2);
 
+    ////    methods for Matrix
+    Matrix rotateClockwise() const;
+
+    Matrix rotateCounterClockwise() const;
+
+    Matrix Transpose() const;
+
 };
 
 
