@@ -121,18 +121,22 @@ Matrix &Matrix::operator-=(const Matrix &to_add) {
     return (*this) += (-to_add);
 }
 
-////    just like += but with *= instead
+////    this differs from the += and -= operators
 Matrix &Matrix::operator*=(const Matrix &to_add) {
-    ////    check for errors with sizes
-    if(this->rows != to_add.rows || this->cols != to_add.cols){
+    ////    check for errors with sizes for multiplication
+    if(this->cols != to_add.rows){
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
+    Matrix result(this->rows, to_add.cols);
     for (int i = 0; i < this->rows; ++i) {
-        for (int j = 0; j < this->rows; ++j) {
-            ////    use the operator() to add the value
-            this->matrix[i * rows + cols] *= to_add(i, j);
+        for (int j = 0; j < to_add.cols; ++j) {
+            for (int k = 0; k < this->cols; ++k) {
+                result(i, j) = this->matrix[i * cols + k] * to_add(k, j);
+            }
         }
     }
+    ////    this assigns the result to this, which in turn deletes the old data from this matrix
+    *this = result;
     return *this;
 }
 
