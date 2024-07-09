@@ -6,11 +6,13 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(matamHW2
-        dry/main.cpp
-        dry/Pirate.cpp
-        dry/Pirate.h
+#        dry/main.cpp
+#        dry/Pirate.cpp
+#        dry/Pirate.h
         wet/Matrix.h
         wet/Matrix.cpp
         wet/MataMvidia.h
         wet/MataMvidia.cpp
-        wet/tests.cpp)
+        wet/tests.cpp
+        wet/Utilities.h
+        wet/Utilities.cpp)
