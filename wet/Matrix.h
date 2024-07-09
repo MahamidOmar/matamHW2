@@ -67,7 +67,7 @@ public:
 
     Matrix rotateCounterClockwise() const;
 
-    Matrix Transpose() const;
+    Matrix transpose() const;
 
 };
 

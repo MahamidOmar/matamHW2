@@ -242,7 +242,7 @@ Matrix Matrix::rotateCounterClockwise() const {
     return result;
 }
 
-Matrix Matrix::Transpose() const {
+Matrix Matrix::transpose() const {
     ////    initialize a new matrix with transposed dimensions
     Matrix result(this->cols, this->rows);
     for (int i = 0; i < this->rows; ++i) {
