@@ -9,4 +9,8 @@ add_executable(matamHW2
         dry/main.cpp
         dry/Pirate.cpp
         dry/Pirate.h
-        wet/Matrix.h wet/Matrix.cpp wet/MataMvidia.h wet/MataMvidia.cpp wet/tests.cpp)
+        wet/Matrix.h
+        wet/Matrix.cpp
+        wet/MataMvidia.h
+        wet/MataMvidia.cpp
+        wet/tests.cpp)
