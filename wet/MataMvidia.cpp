@@ -95,7 +95,10 @@ MataMvidia &MataMvidia::operator+=(const Matrix &to_link) {
 }
 
 MataMvidia MataMvidia::operator+(const MataMvidia &movie1) const {
-
+    ////    first copy the left MataMvidia (from this)
+    MataMvidia result(*this);
+    ////    and then use operator+= for MataMvidia
+    return (result += movie1);
 }
 
 std::ostream& operator<<(std::ostream& os, const Matrix& to_print){
