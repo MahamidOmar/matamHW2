@@ -27,4 +27,28 @@ MataMvidia::~MataMvidia() {
     delete[] frames;
 }
 
+MataMvidia &MataMvidia::operator=(const MataMvidia &to_copy) {
+    ////    check if assigning this to this
+    ////    so no errors occur when copying
+    if(this == &to_copy){
+        return *this;
+    }
+    ////    if reached here length cannot be 0
+    Matrix* copied_frames = new Matrix[to_copy.length];
+    for (int i = 0; i < to_copy.length; ++i) {
+        ////    uses operator= of Matrix
+        copied_frames[i] = to_copy.frames[i];
+    }
+    ////    if reached here then the copying finished correctly
+    ////    now need to delete the old frames
+    delete []this->frames;
+    ////    then assign the new frames array to this
+    this->frames = copied_frames;
+    ////    and finally copy the movie_name, movie_creator and length
+    this->length = to_copy.length;
+    this->movie_name = to_copy.movie_name;
+    this->movie_creator = to_copy.movie_creator;
+    return *this;
+}
+
 
