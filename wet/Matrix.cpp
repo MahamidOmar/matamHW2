@@ -217,6 +217,8 @@ bool operator!=(const Matrix &m1, const Matrix &m2) {
     return !(m1 == m2);
 }
 
+////    in these 3 methods, if the dimensions are 0 then nothing is copied
+////    note that this is the correct implementation
 Matrix Matrix::rotateClockwise() const {
     ////    initialize a new matrix with transposed dimensions
     Matrix result(this->cols, this->rows);
