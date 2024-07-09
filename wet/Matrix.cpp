@@ -148,7 +148,7 @@ Matrix &Matrix::operator*=(const Matrix &to_multiply) {
     for (int i = 0; i < this->rows; ++i) {
         for (int j = 0; j < to_multiply.cols; ++j) {
             for (int k = 0; k < this->cols; ++k) {
-                result(i, j) = this->matrix[i * cols + k] * to_multiply(k, j);
+                result(i, j) += this->matrix[i * cols + k] * to_multiply(k, j);
             }
         }
     }
