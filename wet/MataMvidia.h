@@ -3,7 +3,6 @@
 #define MATAMHW2_MATAMVIDIA_H
 
 #include "Matrix.h"
-#include "Utilities.h"
 
 using std::string;
 

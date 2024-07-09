@@ -1,5 +1,6 @@
 
 #include "MataMvidia.h"
+#include "Utilities.h"
 
 MataMvidia::MataMvidia(const string& movie_name, const string& movie_creator, Matrix* frames, int length)
                         :length(length),movie_name(movie_name), movie_creator(movie_creator){
