@@ -119,7 +119,7 @@ Matrix &Matrix::operator+=(const Matrix &to_add) {
     for (int i = 0; i < this->rows; ++i) {
         for (int j = 0; j < this->rows; ++j) {
             ////    use the operator() to add the value
-            this->matrix[i * rows + cols] += to_add(i, j);
+            this->matrix[i * rows + j] += to_add(i, j);
         }
     }
     return *this;
