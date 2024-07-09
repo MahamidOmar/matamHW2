@@ -87,18 +87,18 @@ Matrix Matrix::operator+(const Matrix &to_add) const {
     return (result += to_add);
 }
 
-Matrix Matrix::operator-(const Matrix &to_add) const {
+Matrix Matrix::operator-(const Matrix &to_deduct) const {
     ////    first copy the current (this) matrix
     Matrix result(*this);
     ////    and then use operator-=
-    return (result -= to_add);
+    return (result -= to_deduct);
 }
 
-Matrix Matrix::operator*(const Matrix &to_add) const {
+Matrix Matrix::operator*(const Matrix &to_multiply) const {
     ////    first copy the current (this) matrix
     Matrix result(*this);
     ////    and then use operator*=
-    return (result *= to_add);
+    return (result *= to_multiply);
 }
 
 ////    implemented fully
@@ -125,29 +125,29 @@ Matrix &Matrix::operator+=(const Matrix &to_add) {
 }
 
 ////    uses the += and the unary - operators
-Matrix &Matrix::operator-=(const Matrix &to_add) {
-    return (*this) += (-to_add);
+Matrix &Matrix::operator-=(const Matrix &to_deduct) {
+    return (*this) += (-to_deduct);
 }
 
 ////    this differs from the += and -= operators
-Matrix &Matrix::operator*=(const Matrix &to_add) {
+Matrix &Matrix::operator*=(const Matrix &to_multiply) {
     ////    if both have no elements
-    if(this->rows == 0 && this-> cols == 0 && to_add.rows == 0 && to_add.cols == 0){
+    if(this->rows == 0 && this-> cols == 0 && to_multiply.rows == 0 && to_multiply.cols == 0){
         return *this;
     }
     ////    reaches here if one has no elements and the other one does
-    if((this->rows == 0 && to_add.rows != 0) || (this->rows != 0 && to_add.rows == 0)){
+    if((this->rows == 0 && to_multiply.rows != 0) || (this->rows != 0 && to_multiply.rows == 0)){
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
     ////    check for errors with sizes for multiplication
-    if(this->cols != to_add.rows || to_add.rows == 0 || to_add.cols == 0){
+    if(this->cols != to_multiply.rows || to_multiply.rows == 0 || to_multiply.cols == 0){
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
-    Matrix result(this->rows, to_add.cols);
+    Matrix result(this->rows, to_multiply.cols);
     for (int i = 0; i < this->rows; ++i) {
-        for (int j = 0; j < to_add.cols; ++j) {
+        for (int j = 0; j < to_multiply.cols; ++j) {
             for (int k = 0; k < this->cols; ++k) {
-                result(i, j) = this->matrix[i * cols + k] * to_add(k, j);
+                result(i, j) = this->matrix[i * cols + k] * to_multiply(k, j);
             }
         }
     }
