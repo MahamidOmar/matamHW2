@@ -229,7 +229,14 @@ Matrix Matrix::rotateClockwise() const {
 }
 
 Matrix Matrix::rotateCounterClockwise() const {
-    return Matrix();
+    ////    initialize a new matrix with transposed dimensions
+    Matrix result(this->cols, this->rows);
+    for (int i = 0; i < this->rows; ++i) {
+        for (int j = 0; j < this->cols; ++j) {
+            result(this->cols - j - 1, i) = this->matrix[i * this->cols + j];
+        }
+    }
+    return result;
 }
 
 Matrix Matrix::Transpose() const {
