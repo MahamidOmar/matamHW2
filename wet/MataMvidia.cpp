@@ -65,8 +65,13 @@ const Matrix &MataMvidia::operator[](int index) const {
     return this->frames[index];
 }
 
+////    here no need to update the length because it is done in operator+= below
 MataMvidia &MataMvidia::operator+=(const MataMvidia &to_link) {
-
+    for (int i = 0; i < to_link.length; ++i) {
+        ////    append to the end using operator+= between MataMvidia and Matrix from below
+        (*this) += to_link[i];
+    }
+    return *this;
 }
 
 MataMvidia &MataMvidia::operator+=(const Matrix &to_link) {
