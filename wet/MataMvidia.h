@@ -15,7 +15,7 @@ private:
     string movie_creator;
 public:
     ////    constructor
-    MataMvidia(string movie_name, string movie_creator, Matrix* frames, int length);
+    MataMvidia(const string& movie_name, const string& movie_creator, Matrix* frames, int length);
 
     ////    copy constructor
     MataMvidia(const MataMvidia& to_copy);
