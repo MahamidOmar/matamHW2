@@ -65,4 +65,35 @@ const Matrix &MataMvidia::operator[](int index) const {
     return this->frames[index];
 }
 
+MataMvidia &MataMvidia::operator+=(const MataMvidia &to_link) {
+
+}
+
+MataMvidia &MataMvidia::operator+=(const Matrix &to_link) {
+    ////    first create a new Matrix array
+    Matrix* new_frames = new Matrix[this->length + 1];
+    ////    copy the old frames
+    for (int i = 0; i < this->length; ++i) {
+        ////    uses operator= from Matrix
+        new_frames[i] = this->frames[i];
+    }
+    ////    then link the matrix to_link to the end, using the operator=
+    new_frames[this->length] = to_link;
+    ////    now delete the old frames array
+    delete[] this->frames;
+    ////    then assign the new_frames array to this
+    this->frames = new_frames;
+    ////    and increase the length accordingly
+    ++(this->length);
+    ////    finally return this
+    return *this;
+}
+
+MataMvidia MataMvidia::operator+(const MataMvidia &movie1) const {
+
+}
+
+std::ostream& operator<<(std::ostream& os, const Matrix& to_print){
+
+}
 
