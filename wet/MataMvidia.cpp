@@ -9,6 +9,10 @@ MataMvidia::MataMvidia(const string& movie_name, const string& movie_creator, Ma
         exitWithError(MatamErrorType::OutOfBounds);
     }
     this->frames = new Matrix[length];
+    for (int i = 0; i < length; ++i) {
+        ////    use operator= defined for matrix
+        this->frames[i] = frames[i];
+    }
 }
 
 ////    if reached the copy constructor, length is never 0
