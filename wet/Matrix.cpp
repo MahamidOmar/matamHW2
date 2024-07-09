@@ -218,7 +218,14 @@ bool operator!=(const Matrix &m1, const Matrix &m2) {
 }
 
 Matrix Matrix::rotateClockwise() const {
-    return Matrix();
+    ////    initialize a new matrix with transposed dimensions
+    Matrix result(this->cols, this->rows);
+    for (int i = 0; i < this->rows; ++i) {
+        for (int j = 0; j < this->cols; ++j) {
+            result(j, this->rows - i - 1) = this->matrix[i * cols + j];
+        }
+    }
+    return result;
 }
 
 Matrix Matrix::rotateCounterClockwise() const {
