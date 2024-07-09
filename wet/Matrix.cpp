@@ -6,7 +6,7 @@
 Matrix::Matrix() : rows(0), cols(0), matrix(nullptr){}
 
 ////    initialize rows and cols to the given parameters, and initialize matrix dynamically
-Matrix::Matrix(int rows, int cols) : rows(rows), cols(0), matrix(new int[rows * cols]){
+Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols), matrix(new int[rows * cols]){
     ////    check if rows or cols are zero or negative
     if(rows <= 0 || cols <= 0){
         exitWithError(MatamErrorType::OutOfBounds);
