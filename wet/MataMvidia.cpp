@@ -110,11 +110,12 @@ std::ostream& operator<<(std::ostream& os, const MataMvidia& to_print){
     os << "Movie Name: " << to_print.movie_name << std::endl;
     ////    according to the test, need to print 2 endl
     os << "Author: " << to_print.movie_creator << std::endl << std::endl;
-    for (int i = 0; i < to_print.length; ++i) {
+    for (int i = 0; i < to_print.length ; ++i) {
         os << "Frame " << i << ":" << std::endl;
         ////    use operator<< from Matrix
-        os << to_print[i];
+        os << to_print[i] << std::endl;
     }
+//    os << to_print[to_print.length - 1] << std::endl;
     os << "-----End of Movie-----";
     return os;
 }
