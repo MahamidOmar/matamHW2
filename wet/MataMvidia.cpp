@@ -51,4 +51,18 @@ MataMvidia &MataMvidia::operator=(const MataMvidia &to_copy) {
     return *this;
 }
 
+Matrix &MataMvidia::operator[](int index) {
+    if(index < 0 || index >= this->length){
+        exitWithError(MatamErrorType::OutOfBounds);
+    }
+    return this->frames[index];
+}
+
+const Matrix &MataMvidia::operator[](int index) const {
+    if(index < 0 || index >= this->length){
+        exitWithError(MatamErrorType::OutOfBounds);
+    }
+    return this->frames[index];
+}
+
 
