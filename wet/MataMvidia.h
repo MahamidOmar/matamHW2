@@ -42,7 +42,7 @@ public:
     MataMvidia operator+(const MataMvidia& movie1) const;
 
     ////    operator<< for printing the movie frames
-    friend std::ostream& operator<<(std::ostream& os, const Matrix& to_print);
+    friend std::ostream& operator<<(std::ostream& os, const MataMvidia& to_print);
 };
 
 

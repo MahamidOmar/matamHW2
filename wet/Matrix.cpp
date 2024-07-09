@@ -74,6 +74,7 @@ std::ostream &operator<<(std::ostream &os, const Matrix &to_print) {
             ////    use the operator() from before, and after each element print |
             os << to_print(i, j) << "|";
         }
+        os << std::endl;
     }
     return os;
 }

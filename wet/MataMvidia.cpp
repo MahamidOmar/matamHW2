@@ -101,7 +101,16 @@ MataMvidia MataMvidia::operator+(const MataMvidia &movie1) const {
     return (result += movie1);
 }
 
-std::ostream& operator<<(std::ostream& os, const Matrix& to_print){
-
+std::ostream& operator<<(std::ostream& os, const MataMvidia& to_print){
+    os << "Movie Name: " << to_print.movie_name << std::endl;
+    ////    according to the test, need to print 2 endl
+    os << "Author: " << to_print.movie_creator << std::endl << std::endl;
+    for (int i = 0; i < to_print.length; ++i) {
+        os << "Frame " << i << ":" << std::endl;
+        ////    use operator<< from Matrix
+        os << to_print[i];
+    }
+    os << "-----End of Movie-----";
+    return os;
 }
 
