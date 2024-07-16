@@ -116,7 +116,7 @@ std::ostream& operator<<(std::ostream& os, const MataMvidia& to_print){
         os << to_print[i] << std::endl;
     }
 //    os << to_print[to_print.length - 1] << std::endl;
-    os << "-----End of Movie-----";
+    os << "-----End of Movie-----" << std::endl;
     return os;
 }
 
