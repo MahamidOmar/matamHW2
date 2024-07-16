@@ -55,7 +55,7 @@ int Matrix::operator()(int i, int j) const {
     if(i < 0 || j < 0 || i > rows || j > cols){
         exitWithError(MatamErrorType::OutOfBounds);
     }
-    return this->matrix[i * rows + j];
+    return this->matrix[i * cols + j];
 }
 
 int &Matrix::operator()(int i, int j) {
@@ -63,7 +63,7 @@ int &Matrix::operator()(int i, int j) {
     if(i < 0 || j < 0 || i > rows || j > cols){
         exitWithError(MatamErrorType::OutOfBounds);
     }
-    return this->matrix[i * rows + j];
+    return this->matrix[i * cols + j];
 }
 
 std::ostream &operator<<(std::ostream &os, const Matrix &to_print) {
@@ -119,7 +119,7 @@ Matrix &Matrix::operator+=(const Matrix &to_add) {
     for (int i = 0; i < this->rows; ++i) {
         for (int j = 0; j < this->rows; ++j) {
             ////    use the operator() to add the value
-            this->matrix[i * rows + j] += to_add(i, j);
+            this->matrix[i * cols + j] += to_add(i, j);
         }
     }
     return *this;
@@ -190,7 +190,7 @@ Matrix &Matrix::operator*=(int scalar) {
     }
     for (int i = 0; i < this->rows; ++i) {
         for (int j = 0; j < this->cols; ++j) {
-            this->matrix[i * rows + j] *= scalar;
+            this->matrix[i * cols + j] *= scalar;
         }
     }
     return *this;
