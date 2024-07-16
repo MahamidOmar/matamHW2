@@ -120,7 +120,7 @@ Matrix &Matrix::operator+=(const Matrix &to_add) {
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
     for (int i = 0; i < this->rows; ++i) {
-        for (int j = 0; j < this->rows; ++j) {
+        for (int j = 0; j < this->cols; ++j) {
             ////    use the operator() to add the value
             this->matrix[i * cols + j] += to_add(i, j);
         }
