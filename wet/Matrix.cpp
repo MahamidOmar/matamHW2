@@ -8,7 +8,7 @@ Matrix::Matrix() : rows(0), cols(0), matrix(nullptr){}
 ////    initialize rows and cols to the given parameters, and initialize matrix dynamically
 Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols), matrix(new int[rows * cols]){
     ////    check if rows or cols are zero or negative
-    if(rows <= 0 || cols <= 0){
+    if(rows < 0 || cols < 0){
         exitWithError(MatamErrorType::OutOfBounds);
     }
     ////    here rows cols, and matrix are already initialized
@@ -67,6 +67,9 @@ int &Matrix::operator()(int i, int j) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Matrix &to_print) {
+    if((to_print.rows == 0 && to_print.cols != 0) || (to_print.rows != 0 && to_print.cols == 0)){
+        return os;
+    }
     for (int i = 0; i < to_print.rows; ++i) {
         ////    first print the | before printing each row
         os << "|";
